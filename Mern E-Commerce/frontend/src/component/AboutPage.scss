@@ -1,0 +1,21 @@
+$color-red: #ff2020;
+$color-black: #2d343e;
+$color-button: #4a4a4b;
+$primary-background :#ffffff;
+$secondry-background : #f0f0f2;
+
+.about-img {
+    background-image: url(../Assets/About.jpg);
+    height: 500px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    h1 {
+        font-size: 5.5rem;
+        font-weight: 700;
+        text-transform: capitalize;
+    }
+}

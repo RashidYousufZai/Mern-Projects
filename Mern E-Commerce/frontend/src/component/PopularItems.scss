@@ -1,0 +1,136 @@
+$color-red: #ff2020;
+$color-black: #2d343e;
+$color-button: #4a4a4b;
+$primary-background :#ffffff;
+$secondry-background : #f0f0f2;
+.cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Polular-Item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+
+    h1 {
+        margin: 100px 0px 40px 0px;
+    }
+
+    p {
+        text-align: centers;
+    }
+
+    .para {
+        color: $color-button;
+    }
+}
+
+.cart {
+    width: 360px;
+    height: 50px;
+    display: none;
+    position: absolute;
+    text-align: center;
+    background-color: $color-red;
+    bottom: 91px;
+    transition: $color-red 1s ease-out 100ms;
+    padding-top: 12px;
+    color: white;
+}
+
+.p-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.main-card {
+    position: relative;
+}
+
+.main-card:hover {
+    .cart {
+        display: block;
+    }
+}
+
+
+.btn {
+    background: #ff2020;
+    font-family: "Josefin Sans", sans-serif;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 30px 28px;
+    border-radius: 0px;
+    display: inline-block;
+    line-height: 0;
+    cursor: pointer;
+    margin-bottom: 0;
+    margin: 10px;
+    cursor: pointer;
+    transition: color 0.4s linear;
+    position: relative;
+    z-index: 1;
+    border: 0;
+    overflow: hidden;
+    margin: 0;
+}
+
+button {
+    animation: wiggle 2s linear infinite;
+}
+
+button:hover {
+    background-color: #f12020 !important;
+}
+
+/* Keyframes */
+@keyframes wiggle {
+
+    0%,
+    7% {
+        transform: rotateZ(0);
+    }
+
+    15% {
+        transform: rotateZ(-15deg);
+    }
+
+    20% {
+        transform: rotateZ(10deg);
+    }
+
+    25% {
+        transform: rotateZ(-10deg);
+    }
+
+    30% {
+        transform: rotateZ(6deg);
+    }
+
+    35% {
+        transform: rotateZ(-4deg);
+    }
+
+    40%,
+    100% {
+        transform: rotateZ(0);
+    }
+}
+
+.button-more-p {
+    margin: 40px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

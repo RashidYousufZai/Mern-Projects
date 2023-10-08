@@ -1,0 +1,46 @@
+.our-mission {
+    margin: 116px 10% 116px 10% !important;
+}
+
+.mission {
+
+    h3 {
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        color: #000a2d;
+        display: inline-block;
+        position: relative;
+        padding-left: 68px;
+    }
+
+    h3::before {
+        position: absolute;
+        content: "";
+        width: 54px;
+        height: 2px;
+        background: #eb566c;
+        top: 0;
+        left: 0px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    p {
+        color: #464d65;
+        font-size: 14px;
+    }
+
+
+}
+
+.vision {
+    margin-top: 40px !important;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .our-mission {
+        margin: 116px 1% 116px 1% !important;
+    }
+}

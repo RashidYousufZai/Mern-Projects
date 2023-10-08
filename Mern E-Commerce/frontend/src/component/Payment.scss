@@ -1,0 +1,42 @@
+$color-red: #ff2020;
+$color-black: #2d343e;
+$color-button: #4a4a4b;
+$primary-background :#ffffff;
+$secondry-background : #f0f0f2;
+
+.payment-row {
+    margin: 0px 80px 0px 80px !important;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    background-color: $color-red;
+    align-content: space-around;
+
+    .payment-col {
+        height: 286px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+    }
+
+    svg {
+        font-size: 40px;
+        color: #ffff;
+        margin-bottom: 15px;
+    }
+
+    h3 {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 16px;
+        margin-bottom: 15px;
+        color: white;
+    }
+}

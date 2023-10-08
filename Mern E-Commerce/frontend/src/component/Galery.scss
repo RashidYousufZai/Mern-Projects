@@ -1,0 +1,54 @@
+$color-red: #ff2020;
+
+.container-fluid {
+    padding: 0px;
+}
+
+.row {
+    padding: 0px 0px 0px 0px !important;
+    margin: 0px 0px 0px 0px !important;
+}
+
+.row {
+    margin: 0px !important;
+}
+
+img {
+    transition: transform 0.25s;
+}
+
+.img-hover img {
+    width: 100%;
+    transition: all .3s ease-in-out;
+}
+
+.img-hover img:hover {
+    transform: scale(1.1);
+}
+
+
+.col1 {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+.img1 {
+    height: 650px;
+    width: 100%;
+}
+
+.img2 {
+    height: 650px;
+    width: 100%;
+}
+
+.img3 {
+    height: 325px;
+    width: 100%;
+}
+
+.img4 {
+    height: 325px;
+    width: 100%;
+}

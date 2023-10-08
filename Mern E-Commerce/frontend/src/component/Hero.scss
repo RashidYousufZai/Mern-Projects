@@ -1,0 +1,144 @@
+$color-red: #ff2020;
+$color-black: #2d343e;
+$color-button: #4a4a4b;
+$primary-background :#ffffff;
+$secondry-background : #f0f0f2;
+
+.hero {
+    width: 100%;
+    background-color: $secondry-background;
+    height: 700px;
+
+    .colum-1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+
+        h1 {
+            color: $color-black;
+            font-size: 96px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 26px;
+        }
+
+        p {
+            font-size: 17px;
+            line-height: 1.6;
+            font-weight: 400;
+            margin-bottom: 39px;
+            color: $color-black;
+            margin-bottom: 60px;
+            padding-right: 50px;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: $color-black;
+            border: 0px solid black;
+            border-radius: 0px;
+            padding: 25px 29px;
+        }
+
+        .btn {
+            background: #ff2020;
+            font-family: "Josefin Sans", sans-serif;
+            text-transform: uppercase;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            padding: 30px 28px;
+            border-radius: 0px;
+            display: inline-block;
+            line-height: 0;
+            cursor: pointer;
+            margin-bottom: 0;
+            margin: 10px;
+            cursor: pointer;
+            transition: color 0.4s linear;
+            position: relative;
+            z-index: 1;
+            border: 0;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        button {
+            animation: wiggle 2s linear infinite;
+        }
+
+        /* Keyframes */
+        @keyframes wiggle {
+
+            0%,
+            7% {
+                transform: rotateZ(0);
+            }
+
+            15% {
+                transform: rotateZ(-15deg);
+            }
+
+            20% {
+                transform: rotateZ(10deg);
+            }
+
+            25% {
+                transform: rotateZ(-10deg);
+            }
+
+            30% {
+                transform: rotateZ(6deg);
+            }
+
+            35% {
+                transform: rotateZ(-4deg);
+            }
+
+            40%,
+            100% {
+                transform: rotateZ(0);
+            }
+        }
+
+    }
+
+
+    .colum-2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-end;
+
+        img {
+            height: 700px;
+            overflow: hidden;
+        }
+    }
+}
+
+
+// @media only screen and (min-width: 600px) {
+//     .rounded-top {
+//         display: none;
+//     }
+// }
+
+@media only screen and (max-width: 789px) {
+    .rounded-top {
+        display: none;
+    }
+
+    .hero {
+        height: 580px;
+
+        .colum-1 {
+            h1 {
+                font-size: 58px !important;
+            }
+        }
+    }
+
+}
