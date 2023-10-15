@@ -2,7 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../component/Loader";
 import { UserContext } from "../context/userContext";
 import { IF } from "../url";
@@ -11,9 +11,21 @@ const PostDetail = () => {
   const [fetchloader, setfetchloader] = useState(true);
   const postId = useParams().id;
   const [post, setPost] = useState({});
-  const {user} = useContext(UserContext);
-  console.log(user?.id, post?.userId)
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
+  console.log(user?.id, post?.userId);
 
+  const handleDelete = async () => {
+    try {
+      const res = await axios.delete(`/api/posts/${postId}`, {
+        withCredentials: true,
+      });
+      navigate("/");
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const fetchPosts = async () => {
     try {
@@ -24,7 +36,7 @@ const PostDetail = () => {
       setfetchloader(false);
     } catch (error) {
       console.log(error);
-      throw  new Error(error)
+      throw new Error(error);
     }
   };
 
@@ -40,21 +52,24 @@ const PostDetail = () => {
         </div>
       ) : (
         <div className="px-8 md:px-[200px] mt-8">
-          {user?.id===post?.userId && 
-          <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold text-black md:text-3xl">
-              {post.title}
-            </h1>
-            <div className="flex items-center justify-center space-x-2">
-              <p className="cursor-pointer">
-                <BiEdit />
-              </p>
-              <p className="cursor-pointer">
-                <MdDelete />
-              </p>
+          {user?.id === post?.userId && (
+            <div className="flex justify-between items-center">
+              <h1 className="text-2xl font-bold text-black md:text-3xl">
+                {post.title}
+              </h1>
+              <div className="flex items-center justify-center space-x-2">
+                <p
+                  className="cursor-pointer"
+                  onClick={() => navigate("/edit/" + postId)}
+                >
+                  <BiEdit />
+                </p>
+                <p className="cursor-pointer" onClick={handleDelete}>
+                  <MdDelete />
+                </p>
+              </div>
             </div>
-          </div>
-          }
+          )}
           <div className="flex items-center justify-between mt-2 md:mt-4">
             <p>@{post.username}</p>
             <div className="flex space-x-2">
@@ -62,7 +77,7 @@ const PostDetail = () => {
               <p>{new Date(post.updatedAt).toString().slice(16, 24)}</p>
             </div>
           </div>
-          <img src={IF+post.photo} className="w-full  mx-auto mt-8" alt="" />
+          <img src={IF + post.photo} className="w-full  mx-auto mt-8" alt="" />
           <p className="mx-auto mt-8">{post.desc}</p>
           <div className="flex items-center mt-8 space-x-4 font-semibold">
             <p>Categories: </p>

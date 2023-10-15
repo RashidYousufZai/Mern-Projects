@@ -1,12 +1,16 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const {createComment,updateComment,deleteComment,getPostComment} = require("../controller/comment")
-const varifyToken = require("../middleware/varifyToken.js")
+const {
+  createComment,
+  updateComment,
+  deleteComment,
+  getPostComment,
+} = require("../controller/comment");
+const varifyToken = require("../middleware/varifyToken.js");
 
+router.post("/create", createComment);
+router.put("/:id", varifyToken, updateComment);
+router.delete("/:id", varifyToken, deleteComment);
+router.get("/post/:postId", getPostComment);
 
-router.post('/create', createComment);
-router.put('/:id', varifyToken, updateComment);
-router.delete('/:id', varifyToken, deleteComment,);
-router.get('/post/:postId', getPostComment)
-
-module.exports = router
+module.exports = router;
