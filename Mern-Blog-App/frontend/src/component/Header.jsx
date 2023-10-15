@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Dialog, Popover } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/userContext";
 import axios from "axios";
 
@@ -9,16 +9,23 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user } = useContext(UserContext);
   const { setUser } = useContext(UserContext);
+  const [prompt,setPrompt]=useState("")
+  const navigate=useNavigate()
+  const path=useLocation().pathname
+
 
   const handleLogout =async () => {
       try {
         await axios.get("/api/auth/logout", {withCredentials: true})
         setUser(null)
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
   }
-  console.log(user);
+
+
+  
+  
   return (
     <header className="bg-white">
       <nav
@@ -78,7 +85,15 @@ export default function Header() {
             </>
           )}
         </Popover.Group>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end"></div>
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        
+        {path==="/" && <div className="flex justify-center items-center space-x-0">
+    <p onClick={()=>navigate(prompt?"?search="+prompt:navigate("/"))} className="cursor-pointer">search</p>
+    <input onChange={(e)=>setPrompt(e.target.value)} className="outline-none px-3 " placeholder="Search a post" type="text"/>
+    
+    </div>}
+    
+        </div>
       </nav>
       <Dialog
         as="div"
