@@ -19,8 +19,8 @@ const CreatePost = () => {
     const post = {
       title,
       desc,
-      username: user.username,
-      userId: user.id,
+      username: user?.username,
+      userId: user?.id,
       categories: cats,
     };
 

@@ -9,23 +9,19 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user } = useContext(UserContext);
   const { setUser } = useContext(UserContext);
-  const [prompt,setPrompt]=useState("")
-  const navigate=useNavigate()
-  const path=useLocation().pathname
+  const [prompt, setPrompt] = useState("");
+  const navigate = useNavigate();
+  const path = useLocation().pathname;
 
+  const handleLogout = async () => {
+    try {
+      await axios.get("/api/auth/logout", { withCredentials: true });
+      setUser(null);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  const handleLogout =async () => {
-      try {
-        await axios.get("/api/auth/logout", {withCredentials: true})
-        setUser(null)
-      } catch (error) {
-        console.log(error);
-      }
-  }
-
-
-  
-  
   return (
     <header className="bg-white">
       <nav
@@ -61,6 +57,18 @@ export default function Header() {
               >
                 Create Post
               </NavLink>
+              <NavLink
+                className="text-sm font-semibold leading-6 text-gray-900"
+                to={`/myblogs/${user.id}`}
+              >
+                My Blogs
+              </NavLink>
+              <NavLink
+                className="text-sm font-semibold leading-6 text-gray-900"
+                to={`/profile/${user.id}`}
+              >
+                Profile
+              </NavLink>
               <button
                 onClick={handleLogout}
                 className="text-sm font-semibold leading-6 text-gray-900"
@@ -86,13 +94,24 @@ export default function Header() {
           )}
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-        
-        {path==="/" && <div className="flex justify-center items-center space-x-0">
-    <p onClick={()=>navigate(prompt?"?search="+prompt:navigate("/"))} className="cursor-pointer">search</p>
-    <input onChange={(e)=>setPrompt(e.target.value)} className="outline-none px-3 " placeholder="Search a post" type="text"/>
-    
-    </div>}
-    
+          {path === "/" && (
+            <div className="flex justify-center items-center space-x-0">
+              <p
+                onClick={() =>
+                  navigate(prompt ? "?search=" + prompt : navigate("/"))
+                }
+                className="cursor-pointer"
+              >
+                search
+              </p>
+              <input
+                onChange={(e) => setPrompt(e.target.value)}
+                className="outline-none px-3 "
+                placeholder="Search a post"
+                type="text"
+              />
+            </div>
+          )}
         </div>
       </nav>
       <Dialog
